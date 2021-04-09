@@ -1,0 +1,472 @@
+\documentclass[11pt, a5paper]{exam}
+
+%==============================================================================
+% Pacotes
+%------------------------------------------------------------------------------
+\usepackage{eulervm}
+\usepackage{fontspec}
+ \setmainfont
+ [
+  Path           = fonts/,
+  Extension      = .ttf,
+  UprightFont    = *-Regular,
+  BoldFont       = *-Bold,
+  ItalicFont     = *-Italic
+ ]{Alegreya}
+\usepackage{polyglossia}
+  \setdefaultlanguage[variant = brazilian]{portuguese}
+\usepackage
+ [
+	 top    = 2.54cm,
+  bottom = 2.54cm,
+		left   = 1.91cm,
+		right  = 1.91cm
+	]{geometry}
+\usepackage{coffee4}
+\usepackage{graphicx}
+	\graphicspath{{./figs/}}
+\usepackage{float}
+\usepackage[labelfont = bf, font = small]{caption}
+\usepackage{fancybox}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{amsmath, amsthm, amsfonts, amssymb, amscd}
+\usepackage{mathtools}
+\usepackage{systeme}
+\usepackage{esint}  
+\usepackage{cancel}
+\usepackage{esvect}
+\usepackage{array}
+ \setcounter{MaxMatrixCols}{20}
+\usepackage{xcolor}
+\usepackage{hyperref} 																											
+ \hypersetup
+ {
+  colorlinks  = true,
+  linkcolor   = blue,
+  citecolor   = blue,
+  filecolor   = blue,
+  urlcolor    = blue,
+  pdfproducer = {LaTeX},
+  pdfcreator  = {XeLaTeX},
+  pdfauthor   = {Ícaro Vidal Freire},
+  pdfsubject  = {Resposta para questão de Kedna}, 
+  pdfkeywords = {Dúvida, Vetorial, Integral Dupla, Matemática, Física,
+		               Volume, coordenada polar, coordenadas cilíndricas}
+ }
+\usepackage{lipsum}
+%==============================================================================
+
+%==============================================================================
+% Operadores Matemáticos
+%------------------------------------------------------------------------------
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\cossec}{cossec}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arcsen}{arcsen}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\Ln}{Ln}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator{\vol}{vol}
+%==============================================================================
+
+%==============================================================================
+% Novos Comandos 
+%------------------------------------------------------------------------------
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\vazio}{\varnothing}
+\newcommand{\Abs}[1]{\vert{#1}\vert}
+\newcommand{\versor}[1]{\cdot\vec{\textbf{#1}}}
+\newcommand{\Cis}[1]{\cos{#1} + i\,\sen{#1}}
+\newcommand{\intc}{\varointctrclockwise}
+\newtheorem{teorema}{Teorema}
+\newtheorem{obs}{Observação}
+%==============================================================================
+
+%==============================================================================
+% Classe Exam
+%------------------------------------------------------------------------------
+\pointpoints{\,ponto}{\,pontos} %---> muda o nome dos pontos: singular e plural,
+%                                     respectivamente
+\pointformat{}
+\qformat{\ovalbox{\bfseries Questão \thequestion}\hfill} %---> o hfill `quebra` 
+%                                                              a linha
+\renewcommand{\solutiontitle}{\noindent{\bfseries \itshape Resposta:}\enspace}%
+\SolutionEmphasis{\small}
+\shadedsolutions %-----------------------------------> Mostra sombra na solução
+\definecolor{SolutionColor}{rgb}{.95,.95,.95}
+\printanswers %--------------------------------------------> Mostra as Soluções
+\pagestyle{headandfoot}
+\runningfootrule
+\firstpagefooter{}{\thepage}{}
+\runningfooter{}{\thepage}{}
+%==============================================================================
+
+%==============================================================================
+% Título
+%------------------------------------------------------------------------------
+\title{\textbf{Cálculo Fracionário}\\ \textbf{Exercícios}}
+\author{Amargosa-BA}
+\date{2021.1}
+%==============================================================================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INÍCIO DO DOCUMENTO
+%------------------------------------------------------------------------------
+\begin{document}
+%
+\maketitle
+%
+\cofeAm{1}{.7}{94}{7cm}{2.5cm} %---------------> configuração da mancha de café
+%
+\begin{abstract}
+Conjunto de questão sobre a técnica de integração popularizada por Feynman.
+As questões foram retiradas do Capítulo VI, do livro \textit{Advanced Calculus}, 
+de Frederick S. Woods.
+\end{abstract}
+%
+\begin{questions}
+%
+
+% Questão 01 ------------------------------------------------------------------
+\question
+Se $ f(x) $ é uma função ímpar, isto é, $ f(-x) = -f(x) $, prove que
+\[
+  \int_{-a}^{a} f(x) \dd{x} = 0. 
+\] 
+%------------------------------------------------------------------------------
+
+% Questão 02 ------------------------------------------------------------------
+\question 
+Se $ f(x) $ é uma função par, isto é, $ f(-x) = f(x) $, prove que
+\[
+  \int_{-a}^{a} f(x) = 2\int_{0}^{a} f(x) \dd x. 
+\] 
+%------------------------------------------------------------------------------
+
+% Questão 03 ------------------------------------------------------------------
+\question 
+Se $ f(a - x) = f(x) $, prove que
+\[
+  \int_{0}^{a} f(x) \dd{x} = 2 \int_{0}^{\frac{1}{2}a} f(x) \dd{x}.
+\]
+%------------------------------------------------------------------------------
+
+% Questão 04 ------------------------------------------------------------------
+\question 
+Sendo  $k$ um inteiro positivo, mostre que 
+\[
+  \int_{0}^{2k\pi} f(\sen{x}) \dd{x} = k \int_{0}^{2\pi}  f(\sen{x}) \dd{x}
+\] 
+%------------------------------------------------------------------------------
+
+% Questão 05 ------------------------------------------------------------------
+\question 
+Se $ f(x) $ possui período $ a $, isto é, $ f(x + a) = f(x) $, prove que
+\[
+  \int_{0}^{ka} f(x) \dd{x} = k \int_{0}^{a} f(x) \dd{x},
+\]
+onde $ k $ é qualquer inteiro.
+%------------------------------------------------------------------------------
+
+% Questão 06 ------------------------------------------------------------------
+\question 
+Se $ a < b $; e $ f_1(x) < f_2(x) < f_3(x) $ para todo $ x $ no intervalo 
+$ (a, b) $, prove que:
+\[
+  \int_{a}^{b} f_1(x) \dd{x} < \int_{a}^{b} f_2(x) \dd{x} < \int_{a}^{b} f_3(x) \dd{x}.
+\]
+%------------------------------------------------------------------------------
+
+% Questão 07 ------------------------------------------------------------------
+\question 
+Se $ m $ e $ M $ são, respectivamente, o \texttt{menor} e o \texttt{maior} valor 
+de $ f(x) $ no intervalo $(a, b)$; bem como, $ \phi{(x)} > 0 $, neste mesmo 
+intervalo, prove que:
+\[
+  m \int_{a}^{b} \phi(x) \dd{x} < \int_{a}^{b} f(x) \phi{(x)} \dd{x} < M \int_{a}^{b} \phi{(x)} \dd{x}
+\]
+e, portanto, para $ a < \xi < b $:
+\[
+  \int_{a}^{b} f(x) \phi{(x)} \dd{x} = f(\xi) \int_{a}^{b} \phi{(x)} \dd{x}.
+\]
+%------------------------------------------------------------------------------
+
+% Questão 08 ------------------------------------------------------------------
+\question 
+Calcule $ \displaystyle \int_{0}^{3} \left( 1 + x^2 \right)^{3/2} \dd{x} $, pela
+regra de Simpson, com $ n = 3 $.
+%------------------------------------------------------------------------------
+
+% Questão 09 ------------------------------------------------------------------
+\question 
+Calcule $ \displaystyle \int_{1}^{3} \frac{\dd{x}}{\left( 1 + x^2 \right)^{2}} \dd{x} $, 
+pela regra de Simpson, com $ n = 2 $.
+%------------------------------------------------------------------------------
+
+% Questão 11 ------------------------------------------------------------------
+\question 
+Calcule $ \displaystyle \int_{1}^{\pi/3} \log{(\cos{x})}\dd{x} $, 
+pela regra de Simpson, com $ n = 2 $.
+%------------------------------------------------------------------------------
+
+% Questão 12 ------------------------------------------------------------------
+\question 
+Examine a integral 
+$ \displaystyle \int_{0}^{1} \frac{\dd{x}}{\sqrt{\alpha^2 + x^2}} $ para 
+continuidade quando $ \alpha = 0 $.
+%------------------------------------------------------------------------------
+
+% Questão 13 ------------------------------------------------------------------
+\question 
+Examine a integral 
+$ \displaystyle \int_{0}^{1} \frac{\dd{x}}{\sqrt{\alpha^2 + x^2}} $ na
+vizinhança de $ \alpha = 0 $.
+
+%------------------------------------------------------------------------------
+
+% Questão 14 ------------------------------------------------------------------
+\question Encontre as derivadas, com respeito a $ \alpha $, das seguintes 
+integrais, sem primeiro integrá-las; e, depois, verifique o resultado integrando 
+e derivando em seguida.
+
+\begin{multicols}{2}
+ \begin{parts}
+  \part $ \displaystyle \int_{0}^{\alpha x} \cos{(x + \alpha)} \dd{x} $
+  \part $ \displaystyle \int_{0}^{x} \arcsen{\left(\frac{x}{\alpha}\right)} \dd{x} $
+  \part $ \displaystyle \int_{0}^{\sqrt{\alpha}} x \dd{x} $
+  \part $ \displaystyle \int_{\alpha^2}^{\alpha^8} (x^2 + \alpha^2) \dd{x} $
+ \end{parts}
+\end{multicols}
+%------------------------------------------------------------------------------
+
+% Questão 15 ------------------------------------------------------------------
+\question 
+Por diferenciação em relação a $ \alpha $, encontre os valores da seguintes 
+integrais:
+\begin{multicols}{2}
+ \begin{parts}
+  \part $ \displaystyle \int_{0}^{\pi} \ln{(1 + \alpha \cos{x})} \dd{x} $;
+  \part $ \displaystyle \int_{0}^{1} \frac{x^{\alpha} -1 }{\ln{x}} \dd{x} $
+ \end{parts}
+\end{multicols}
+%------------------------------------------------------------------------------
+
+% Questão 16 ------------------------------------------------------------------
+\question 
+Por sucessivas diferenciações de 
+$ \displaystyle \int_{0}^{1} x^n \dd{x} = \frac{1}{n + 1} $, obtenha:
+\[
+  \int_{0}^{1} x^n\left( \ln{x} \right)^{m} \dd{x} = (-1)^{m} \frac{m!}{(n + 1)^{m + 1}}
+\]
+%------------------------------------------------------------------------------
+
+% Questão 17 ------------------------------------------------------------------
+\question 
+Sabendo-se, para $ \alpha > 1 $, que:
+\[
+  \int_{0}^{\pi} \frac{\dd{x}}{\alpha - \cos{x}} = \frac{\pi}{\sqrt{\alpha^2 -1}},
+\]
+mostre que:
+\[
+  \int_{0}^{\pi} \ln{\frac{b - \cos{x}}{a - \cos{x}}} \dd{x} = \pi \ln{\frac{b + \sqrt{b^2 -1}}{a + \sqrt{a^2 -1}}}.
+\]
+%------------------------------------------------------------------------------
+
+% Questão 18 ------------------------------------------------------------------
+\question 
+Teste a convergência das seguintes integrais:
+\begin{multicols}{2}
+ \begin{parts}
+  \part $ \displaystyle \int_{1}^{\infty} \frac{\dd{x}}{x\sqrt{1 + x^2}} $.
+  \part $ \displaystyle \int_{0}^{\infty} \frac{\sen^2{x}}{x} \dd{x} $.
+  \part $ \displaystyle \int_{a}^{\infty} \frac{x^4 \dd{x}}{(x^2 + a^2)^{5/2}} $.
+  \part $ \displaystyle \int_{0}^{\infty} e^{-a^2 x^2} \cos{(bx)} \dd{x} $.
+  \part $ \displaystyle \int_{0}^{\infty} e^{^{-x^2 - \frac{a^2}{x^2}}} \dd{x} $.
+  \part $ \displaystyle \int_{2}^{\infty} \frac{\dd{x}}{\sqrt{x^3 -1}} $.
+ \end{parts}
+\end{multicols}
+%------------------------------------------------------------------------------
+
+% Questão 19------------------------------------------------------------------
+\question 
+Prove\footnote{o autor indica um caminho semelhante ao adotado no Exemplo 3, \S 62, do livro} 
+a convergência de $ \displaystyle \int_{0}^{\infty} \sen{x^2} \dd{x} $.
+%------------------------------------------------------------------------------
+
+% Questão 20 ------------------------------------------------------------------
+\question 
+Prove a convergência de $ \displaystyle \int_{0}^{\infty} \frac{e^{-ax}\sen{mx}}{x} \dd{x} $.
+%------------------------------------------------------------------------------
+
+% Questão 21 ------------------------------------------------------------------
+\question 
+Prove que as seguintes integrais satisfazem as condições de diferenciabilidade 
+em relação a $ \alpha $, sob o sinal da integral:
+\begin{multicols}{2}
+ \begin{parts}
+  \part $ \displaystyle \int_{0}^{\infty} e^{-\alpha x} \dd{x} $.
+  \part $ \displaystyle \int_{0}^{\infty} e^{-\alpha x^2} \dd{x} $.
+  \part $ \displaystyle \int_{0}^{\infty} e^{-b x^2} \cos{(\alpha x)} \dd{x} $.
+  \part $ \displaystyle \int_{0}^{\infty} \frac{\dd{x}}{x^2 + \alpha} \dd{x} $.
+ \end{parts}
+\end{multicols}
+%------------------------------------------------------------------------------
+
+% Questão 22 ------------------------------------------------------------------
+\question 
+Sabendo-se que $ \int\limits_{0}^{\infty} e^{-\alpha x} \dd{x} = \frac{1}{\alpha} $,
+obtenha, por diferenciação,
+\[
+  \int_{0}^{\infty} x^n e^{-\alpha x} \dd{x} = \frac{n!}{\alpha^{n + 1}}.
+\]
+%------------------------------------------------------------------------------
+
+% Questão 23 ------------------------------------------------------------------
+\question 
+Sabendo-se que $ \int\limits_{0}^{\infty} e^{-\alpha x^2} \dd{x} = \frac{1}{2} \sqrt{\frac{\pi}{\alpha}} $,
+obtenha, por diferenciação,
+\[
+  \int_{0}^{\infty} x^{2n} e^{-\alpha x^2} \dd{x} = \frac{\sqrt{\pi}}{2}\frac{1 \cdot 3 \cdots (2n -1)}{2^n\alpha^{n + \frac{1}{2}}}.
+\]
+%------------------------------------------------------------------------------
+
+% Questão 24 ------------------------------------------------------------------
+\question 
+De $ \int\limits_{0}^{\infty} \frac{\dd{x}}{x^2 + \alpha} = \frac{\pi}{2\sqrt{\alpha}} $,
+obtenha, por diferenciação,
+\[
+  \int_{0}^{\infty} \frac{\dd{x}}{(x^2 + \alpha)^{n + 1}} = \frac{\pi}{2} \cdot \frac{1 \cdot 3 \cdots (2n -1)}{2\cdot 4 \cdots 2n \alpha^{n + \frac{1}{2}}}.
+\]
+%------------------------------------------------------------------------------
+
+% Questão 25 ------------------------------------------------------------------
+\question 
+De $ \int\limits_{0}^{\infty} e^{-\alpha x} \cos{mx} \dd{x} = \frac{\alpha}{\alpha^2 + m^2} $,
+obtenha, por integração:
+\[
+  \int_{0}^{\infty} \frac{e^{-\alpha x} - e^{-\beta x}}{x \sec{mx}} \dd{x} = \frac{1}{2} \ln{\frac{\beta^2 + m^2}{\alpha^2 + m^2}}.
+\]
+%------------------------------------------------------------------------------
+
+% Questão 26 ------------------------------------------------------------------
+\question 
+De $ \int\limits_{0}^{\infty} e^{-\alpha x} \sen{mx} \dd{x} = \frac{m}{\alpha^2 + m^2} $,
+obtenha, por integração:
+\[
+  \int_{0}^{\infty} \frac{e^{-\alpha x} - e^{-\beta x}}{x \cossec{mx}} \dd{x} = \arctg{\frac{\beta}{m}} - \arctg{\frac{\alpha}{m}}.
+\]
+%------------------------------------------------------------------------------
+
+% Questão 27 ------------------------------------------------------------------
+\question
+De $ \int\limits_{0}^{\infty} e^{-\alpha x} \dd{x} = \frac{1}{\alpha} $,
+obtenha, por integração:
+\[
+  \int_{0}^{\infty} \frac{e^{-ax} - e^{-bx}}{x} \dd{x} = \ln{\frac{b}{a}}.
+\]
+%------------------------------------------------------------------------------
+
+% Questão 28 ------------------------------------------------------------------
+\question 
+De $ \int\limits_{0}^{\infty} e^{-\alpha^2 x^2} \dd{x} = \frac{\sqrt{\pi}}{2\alpha} $,
+obtenha, por integração:
+\[
+  \int_{0}^{\infty} \frac{e^{-a^2x^2} - e^{-b^2x^2}}{x^2} \dd{x} = (b - a)\sqrt{\pi}.
+\]
+%------------------------------------------------------------------------------
+
+% Questão 29 ------------------------------------------------------------------
+\question 
+Investigue a convergência das seguintes integrais:
+\begin{multicols}{2}
+ \begin{parts}
+  \part $ \displaystyle \int_{0}^{1} (\ln{x})^n \dd{x} $.
+  \part $ \displaystyle \int_{0}^{1} \frac{\ln{x}}{1 - x^2} \dd{x} $.
+  \part $ \displaystyle \int_{0}^{1} \frac{x}{(1 - x^4)^{1/3}} \dd{x} $.
+  \part $ \displaystyle \int_{0}^{\infty} \frac{1}{x^{2/3}(1 + x)} \dd{x} $.
+  \part $ \displaystyle \int_{1}^{\infty} \frac{1}{x\sqrt{x^2 - 1}} \dd{x} $.
+  \part $ \displaystyle \int_{0}^{1} \sqrt{\frac{1 - k^2x^2}{1 - x^2}} \dd{x} $.
+ \end{parts}
+\end{multicols}
+%------------------------------------------------------------------------------
+
+% Questão 30 ------------------------------------------------------------------
+\question 
+Calcule as integrais que seguem.
+Em alguns casos, apenas uma mudança de variável é necessária.
+
+\begin{parts}
+ \part $ \displaystyle \int_{0}^{\infty} \frac{\sen{mx}}{x} \dd{x} = 
+ \begin{cases} 
+ \pi/2,  &\text{ se } m > 0,\\
+ 0,      &\text{ se } m = 0,\\
+ -\pi/2, &\text{ se } m < 0.
+ \end{cases}$
+ \part $ \displaystyle \int_{0}^{\pi} x \ln{(\sen{x})} \dd{x} = -\frac{\pi^2}{2} \ln{2} $.
+ \part $ \displaystyle \int_{0}^{\infty} e^{-\alpha^2 x^2} \dd{x} = \frac{1}{2\alpha} \sqrt{\pi} $.
+ \part $ \displaystyle \int_{0}^{1} \frac{\dd{x}}{\sqrt{\ln\frac{1}{x}}} = \sqrt{\pi} $.
+ \part $ \displaystyle \int_{0}^{\infty} \frac{\sen{x}\cos{mx}}{x} \dd{x} = 
+ \begin{cases} 
+ 0,     &\text{ se } m < -1 \text{ ou } m > 1, \\
+ \pi/4, &\text{ se } m = -1 \text{ ou } m = 1, \\
+ \pi/2, &\text{ se } -1 < m < 1.
+ \end{cases}$
+ \part $ \displaystyle \int_{0}^{\infty} e^{-x^2 - \frac{\alpha^2}{x^2}} \dd{x} = \frac{e^{-2\alpha}\sqrt{\pi}}{2} $.\\
+ {\footnotesize \textbf{(Dica):} Representando a integral por $u$, primeiro mostre que $ \frac{\dd{u}}{\dd{a}} = -2u $}
+ \part $ \displaystyle \int_{0}^{\infty} \frac{e^{-ax} \sen{bx}}{x} \dd{x} = \arctg{\frac{b}{a}} $.
+ \part $ \displaystyle \int_{0}^{\infty} \frac{\cos{x}}{\sqrt{x}} \dd{x} = \int_{0}^{\infty} \frac{\sen{x}}{\sqrt{x}} \dd{x}  = \sqrt{\frac{\pi}{2}} $.
+ \part $ \displaystyle \int_{0}^{\pi} \frac{\ln{(1 + k \cos{x})}}{\cos{x}} \dd{x} = \pi \arcsen{k}$, com $ 0 < k < 1 $.
+ \part $ \displaystyle \int_{0}^{\pi/2} \ln{\left(\frac{1 + k \sen{x}}{1 - k \sen{x}}\right)} \cdot \frac{\dd{x}}{\sen{x}} = \pi \arcsen{k}$, com $ 0 < k < 1 $.
+ \part $ \displaystyle \int_{0}^{\infty} xe^{-\alpha x} \cos{\beta x} \dd{x} = \frac{\alpha^2 - \beta^2}{(\alpha^2 + \beta^2)^2}$.
+ \part $ \displaystyle \int_{0}^{a} \sqrt{a^2 - x^2} \arccos\left(\frac{x}{a}\right) \dd{x} = a^2\left(\frac{\pi^2}{16} + \frac{1}{4}\right) $.
+ \part $ \displaystyle \int_{0}^{\pi} \frac{\sen{x} \dd{x}}{\sqrt{1 - 2 \alpha \cos{x} + \alpha^2}} = 
+ \begin{cases}
+ 2, &\text{ se } \alpha^2 \leq 1,\\
+ \frac{2}{\alpha}, &\text{ se } \alpha > 1.
+ \end{cases}$
+\end{parts}
+%------------------------------------------------------------------------------
+
+% Questão 31 ------------------------------------------------------------------
+\question 
+Mostre para $ x $ suficientemente grande que:
+\[
+  \int_{x}^{\infty} e^{-x} \frac{\dd{x}}{x} = e^{-x} \left(\frac{1}{x} - \frac{1}{x^2} + \frac{2!}{x^3} - \ldots + (-1)^n \frac{(n - 1)!}{x^n}\right) + R_n
+\]
+\begin{parts}
+ \part Mostre que a série diverge, mas que $ R_n $ é menor, em valor absoluto, do que o último termo entre parênteses. 
+  Esta é uma série assintótica.
+\end{parts}
+
+%------------------------------------------------------------------------------
+
+% Questão 32 ------------------------------------------------------------------
+\question 
+Mostre que
+{
+\small
+ \[
+  \int_{x}^{\infty} e^{-x^2} \dd{x} = 
+  \frac{e^{-x^2}}{2x}
+  \left(\, 
+  1 - \frac{1}{2x^2} + \frac{1\cdot 3}{2^2x^4} - \ldots + (-1)^n \frac{1\cdot 3\cdot 5 \cdots (2n -1)}{2^n x^{2n}}
+  \,\right) + R_n.
+ \]
+}
+\begin{parts}
+ \part Mostre, também, que esta é uma série assintótica, como na questão anterior.
+\end{parts}
+%------------------------------------------------------------------------------
+
+\end{questions}
+
+%
+\end{document}
+%------------------------------------------------------------------------------
+% FIM DO DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
